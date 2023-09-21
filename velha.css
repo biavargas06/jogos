@@ -10,3 +10,32 @@ body{
     display: flex;
     align-items: center;
 }
+
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+h1{
+    text-align: center;
+}
+
+hr{
+    height: 3px;
+    background-color: black;
+    margin-bottom: 10px;
+}
+
+.game{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.game button{
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: rgb(221, 221, 221);
+}
