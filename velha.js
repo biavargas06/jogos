@@ -53,7 +53,15 @@ function check(){
 
 for (pos of positions){
     if (pos.every((item) => items.includes(item))){
-        alert
+        alert("O jogador '" + playerLastMove + " ' ganhou!");
+        init();
+        return;
     }
+}
+
+if (selected.filter((item) => item).length === 9){
+    alert("Deu velha!");
+        init();
+        return;
 }
 }
