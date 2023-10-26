@@ -7,18 +7,18 @@
 .game{
     width: 80%;
     height: 500px;
-    border: 1px solid #333;
+    border: 15px solid rgb(21, 255, 0);
     margin: 0 auto;
     position: relative;
     overflow: hidden;
+    background: linear-gradient(#61e0fa, #f5fdff);
 }
 
 .cano{
     position: absolute;
     bottom: 0;
-    width: 100px;
-    left: 100px;
-    /* animation: cano-animation 2s infinite linear; */
+    width: 80px;
+    animation: cano-animation 2s infinite linear;
 }
 
 .mario{
@@ -29,6 +29,11 @@
 
 .jump{
     animation: jump 500ms infinite ease-out;
+}
+
+.nuvens{
+    position: absolute;
+    width: 550px;
 }
 
 @keyframes cano-animation {
