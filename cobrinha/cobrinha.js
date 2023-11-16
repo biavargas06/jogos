@@ -5,22 +5,63 @@ const size = 30;
 
 const snake = [
     {x: 200, y: 200},
-    {x: 230, y: 200},
-    {x: 260, y: 200},
-    {x: 290, y: 200}
+    {x: 230, y: 200}
 ]
+
+let direction , loopId
 
 const drawSnake = () => {
     ctx.fillStyle = "#ddd"
 
-    snake.forEach((position)=>{
+    snake.forEach((position, index)=>{
 
-        if (index == snake.length = 1){
-            ctx.fillStyle = "blue"
+        if (index == snake.length - 1){
+            ctx.fillStyle = "white"
         }
 
         ctx.fillRect(position.x, position.y, size, size)
     })
 }
 
-drawSnake()
+const moveSnake = () => {
+if (!direction) return 
+
+    const head = snake[snake.lenght - 1]
+
+    if (direction == "right") {
+        snake.push({ x: head.x + size, y: head.y })     
+    }
+
+    if (direction == "left") {
+        snake.push({ x: head.x - size, y: head.y })     
+    }
+
+    if (direction == "down") {
+        snake.push({ x: head.x, y: head.y + size})     
+    }
+
+    if (direction == "up") {
+        snake.push({ x: head.x, y: head.y - size})     
+    }
+
+    snake.shift()
+}
+
+const gameLoop = () => {
+    clearInterval(loopId)
+
+    ctx.clearRect(0, 0, 600, 600)
+    moveSnake()
+    drawSnake()
+
+    loopId = setTimeout(() => {
+        gameLoop()
+    }, 300)
+}
+
+gameLoop()
+
+document.addEventListener("keydown", (event)=> {
+    console.log(event.key)
+})
+
