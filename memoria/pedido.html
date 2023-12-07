@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu presente!!!</title>
+    <style>
+        body{
+            background-color: pink;
+            font-family: monospace;
+        }
+        .painel{
+            margin: auto;
+            padding-top: 20px;
+            padding-bottom: 400px;
+            text-align: center;
+            width: 550px;
+            height: 500px;
+            border-radius: 15px;
+        }
+        h2{
+            font-size: 2em;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        #sim{
+            padding: 15px 20px;
+            color: brown;
+            background-color:#fff ;
+            border: 2px solid;
+            font-size: 1em;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-weight: 400;
+            border-radius: 15px;
+            margin-left: -120px;
+        }
+        #sim:focus{
+            color: #fff;
+            background-color:brown ;
+        }
+        #nao{
+            position: absolute;
+            padding: 15px 20px;
+            color: brown;
+            background-color:#fff ;
+            border: 2px solid;
+            font-size: 1em;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-weight: 400;
+            border-radius: 15px;
+            margin-left: 10px;
+        }
+        .gif{
+            align-items: center;
+            max-width: 550px;
+            border-radius: 30px;
+        }
+        p{
+            font-size: 1.5em;
+        }
+        .confete-container {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Definindo altura para ocupar 100% da altura da janela */
+            overflow: hidden; /* Oculta confetes que ultrapassam a altura */
+        }
+        .confete {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: confete-fall 3s ease-out infinite;
+        }
+
+        @keyframes confete-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="painel">
+        <div class="container-confete">
+
+        <div id="botaoNaoContainer" style="position: relative;">
+
+        <h2>Para o professor Rafael Jaques</h2>
+
+        <p>Boa tarde, professor!!! Tudo bem?</p>
+        
+        <p>O senhor é um professor muito querido por nós, sempre estando disposto a nos ajudar e nos ensinar (mesmo com as nossas trapalhadas ou pouco duvidosas ksksksk). Compartilhamos muitos momentos incríveis ao seu lado, momentos que, sem dúvida, estarão marcados em nossa memória .</p>
+        
+        <p>Ao pensarmos em uma figura inspiradora para nossa área, visualizamos você! Temos orgulho em dizer que o senhor é nosso professor. Por isso queremos fazer uma pergunta...</p>
+        
+        <img class="gif" src="https://blog.tudodebicho.com.br/wp-content/uploads/2020/08/calopsita-dan%C3%A7ando-1.gif" alt="">
+        
+        <p>Aceita ser nosso patrono?</p>
+    
+        <button  id="sim" onclick="criarConfetes()">Sim 🤩</button>
+        <button onmouseover="fuja()" id="nao">Não 😭</button>
+        </div>
+    </div>
+    </div>
+        <script>
+            function fuja(){
+                var botaoNao = document.getElementById("nao");
+                var botaoNaoContainer = document.getElementById("botaoNaoContainer");
+
+                var larguraJanela = botaoNaoContainer.clientWidth;
+                var alturaJanela = botaoNaoContainer.clientHeight;
+
+                // var larguraJanela = window.innerWidth;
+                // var alturajanela = window.innerHeight;
+
+                var maxX = larguraJanela - botaoNao.offsetWidth;
+                var maxY = alturaJanela - botaoNao.offsetHeight;
+
+                var aleatorioX = Math.floor(Math.random() * maxX);
+                var aleatorioY = Math.floor(Math.random() * maxY);
+
+                botaoNao.style.left = aleatorioX + "px";
+                botaoNao.style.top = aleatorioY + "px";
+
+            }
+            function criarConfetes() {
+            const confeteContainer = document.querySelector('.painel');
+            
+            for (let i = 0; i < 50; i++) {
+                const confete = document.createElement('div');
+                confete.classList.add('confete');
+                confete.style.backgroundColor = randomColor();
+                confete.style.left = `${Math.random() * 100}%`;
+                confete.style.animationDelay = `${Math.random() * 3}s`;
+
+                confeteContainer.appendChild(confete);
+            }
+        }
+
+        function randomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+        </script>
+</body>
+</html>
